@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>ZOO World</title>
+</head>
+
+<body>
+    <!-- Creating ZOO details in Database -->
+    <form id="ZOOListingForm" class="container border border-dark rounded p-1 mt-2" action="/createZoo" method="post">
+        <b>Adding Zoo Details:</b>
+        <div class=row>
+            <div class="form-group col-5">
+                <label for="zooName">Zoo Name</label>
+                <input type="text" id="zooName" name="name">
+            </div>
+            <div class="form-group col-5">
+                <label for="zooStatus">Status</label>
+                <input type="text" id="zooStatus" value="Open" name="status">
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+
+    <!-- Creating location details in Database -->
+    <form id="Location" class="container border border-dark rounded p-1 mt-2" action="/createLocation" method="post">
+        <b>Adding Location information</b>
+        <div class=row>
+            <div class="form-group col-6">
+                <label for="locationName">Name of location</label>
+                <input type="text" id="locationName" name="name">
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+    <!-- Creating Animal details in Database -->
+    <form id="animalDetails" class="container border border-dark rounded p-1 mt-2" action="/createAnimal" method="post">
+        <b>Adding Animal Information</b>
+        <div class=row>
+            <div class="form-group col-2">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="">
+            </div>
+            <div class="form-group col-2">
+                <label for="animal_type">Type</label>
+                <select class="form-control" id="animal_type" name="animal_type">
+                    <option selected>Choose...</option>
+                    <option>Mammal</option>
+                    <option>Reptile</option>
+                    <option>Insect</option>
+                </select>
+            </div>
+            <div class="form-group col-2">
+                <label for="birth_day">Birth day</label>
+                <input type="date" id="birth_day" name="birth_day">
+            </div>
+            <div class="form-group col-2">
+                <label for="height">Height</label>
+                <input type="text" id="height" name="height">
+            </div>
+            <div class="form-group col-2">
+                <label for="weight">Weight</label>
+                <input type="text" id="weight" name="weight">
+            </div>
+            <div class="form-group col-2">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option selected>Choose...</option>
+                    <option>Live</option>
+                    <option>Dead</option>
+                    <option>Fossil</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+    <!-- Adding animal to location -->
+    <form id="animalListingForm" class="container border border-dark rounded p-1 mt-2">
+        <b>Adding Animal to Location</b>
+        <div class=row>
+            <div class="form-group col-5">
+                <label for="animal">Animal List</label>
+                <select class="form-control" id="animal">
+                    <option selected>Choose...</option>
+                </select>
+            </div>
+            <div class="form-group col-5">
+                <label for="location">Location List</label>
+                <select class="form-control" id="location">
+                    <option selected>Choose...</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+    <!-- Updating Zoo details -->
+    <form id="updatingZOOListingForm" class="container border border-dark rounded p-1 mt-2">
+        <b>Updating Zoo Details:</b>
+        <div class="form-group col-5">
+            <label for="zoo">Zoo List</label>
+            <select class="form-control" id="zooDetailsUpdate">
+                <option selected>Choose...</option>
+            </select>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+    <form class="container border border-dark rounded p-1 mt-2">
+        <div class=row id="updatingIdZoo">
+            
+        </div>
+    </form>
+
+
+
+    <!-- <form id="ZOOListingForm" class="container border border-dark rounded p-1 mt-2" action="/createZoo" method="post">
+        <b>Adding Zoo Details:</b>
+        <div class=row>
+            <div class="form-group col-5">
+                <label for="zooName">Zoo Name</label>
+                <input type="text" id="zooName" name="name">
+            </div>
+            <div class="form-group col-5">
+                <label for="zooStatus">Status</label>
+                <input type="text" id="zooStatus" value="Open" name="status">
+            </div>            
+        </div> 
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>       
+    </form> -->
+
+
+    <!-- Deleting activities Zoo-->
+    <form class="container border border-dark rounded p-1 mt-2" id="deleteActivity">
+        <b>Deleting Activities</b>
+        <div class="form-group col-5">
+            <label for="zooDelete">Zoo List</label>
+            <select class="form-control" id="zooDelete">
+                <option selected>Choose...</option>
+            </select>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+
+    <!-- User buy ticket -->
+
+    <form id="formBuyTicket" class="container border border-dark rounded p-1 mt-2">
+        <b>User Ticketing</b>
+        <div class=row>
+            <div class="form-group col-5">
+                <label for="zoo">Zoo List</label>
+                <select class="form-control" id="zoo">
+                    <option selected>Choose...</option>
+                </select>
+            </div>
+            <div class="form-group col-5">
+                <label for="amount">Ticket Price</label>
+                <select class="form-control" id="amount">
+                    <option selected>Choose...</option>
+                    <option>300 BDT</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+    </form>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+        function loadAll() {
+            fetch('/animal')
+                .then(res => res.json())
+                .then(animal => {
+                    const container = document.getElementById('animal');
+                    // container.innerHTML = '';
+                    animal.forEach(item => {
+                        const option = document.createElement('option');
+                        option.innerHTML = `-- Name: ${item.name} -- BirthDay: ${item.birth_day}`;
+                        option.value = `${item.id}`
+                        container.appendChild(option);
+                    });
+                })
+
+            fetch('/location')
+                .then(res => res.json())
+                .then(location => {
+                    const container = document.getElementById('location');
+                    // container.innerHTML = '';
+                    location.forEach(item => {
+                        const option = document.createElement('option');
+                        option.innerHTML = `${item.name}`;
+                        option.value = `${item.id}`
+                        container.appendChild(option);
+                    });
+                })
+
+            fetch('/zoo')
+                .then(res => res.json())
+                .then(zoo => {
+                    const container = document.getElementById('zoo');
+                    // container.innerHTML = '';
+                    zoo.forEach(item => {
+                        const option = document.createElement('option');
+                        option.innerHTML = `-- Name: ${item.name} -- Status: ${item.status}`;
+                        option.value = `${item.id}`
+                        container.appendChild(option);
+                        // containerzooDelete.appendChild(option);
+                    });
+                })
+
+            fetch('/zoo')
+                .then(res => res.json())
+                .then(zoo => {
+                    const containerzooDelete = document.getElementById('zooDelete');
+                    zoo.forEach(item => {
+                        const option = document.createElement('option');
+                        option.innerHTML = `-- Name: ${item.name} -- Status: ${item.status}`;
+                        option.value = `${item.id}`;
+                        containerzooDelete.appendChild(option);
+                    });
+                })
+
+            fetch('/zoo')
+                .then(res => res.json())
+                .then(zoo => {
+                    const zooDetailsUpdatecontainer = document.getElementById('zooDetailsUpdate');
+                    // container.innerHTML = '';
+                    zoo.forEach(item => {
+                        const option = document.createElement('option');
+                        option.innerHTML = `-- Name: ${item.name} -- Status: ${item.status}`;
+                        option.value = `${item.id}`
+                        zooDetailsUpdatecontainer.appendChild(option);
+                    });
+                })
+        }
+        loadAll();
+
+        const animalListingForm = document.getElementById('animalListingForm');
+        const formBuyTicketForm = document.getElementById('formBuyTicket');
+        const formdeleteActivity = document.getElementById('deleteActivity');
+        const updatingZOOListingForm = document.getElementById('updatingZOOListingForm');
+
+
+        animalListingForm.addEventListener('submit', function (e) {
+            e.preventDefault()
+            const animal_id = document.getElementById('animal').value;
+            const location_id = document.getElementById('location').value;
+            const data = { animal_id: animal_id, location_id: location_id }
+            fetch('/animalAddToLocation', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    location.reload();                    
+                });
+        })
+
+        formBuyTicketForm.addEventListener('submit', function (e) {
+            e.preventDefault()
+            const zoo_id = document.getElementById('zoo').value;
+            const amount = document.getElementById('amount').value;
+            const data = { zoo_id: zoo_id, amount: amount }
+            fetch('/ticket', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    location.reload();
+                });
+        })
+
+        formdeleteActivity.addEventListener('submit', function (e) {
+            e.preventDefault()
+            const id = document.getElementById('zooDelete').value;
+
+            fetch(`/deleteZoo/${id}`, {
+                method: 'DELETE',
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    location.reload();
+                });
+        })
+
+        updatingZOOListingForm.addEventListener('submit', function (e) {
+            e.preventDefault()
+            const zoo_id = document.getElementById('zooDetailsUpdate').value;
+            fetch(`/zoo/${zoo_id}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    const updatingIdZoo = document.getElementById('updatingIdZoo');
+                    updatingIdZoo.innerHTML = ` 
+                    <b class="col-12">Please type your update data</b>
+                        <div class="form-group col-5">
+                            <label for="zooName">Zoo Name</label>
+                            <input type="text" id="updatedZooName" name="name" value = "${data.name}">
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="zooStatus">Status</label>
+                            <input type="text" id="updatedZooStatus" value="${data.status}" name="status">
+                        </div> 
+                        <button onclick="updateZooDetails('${data.id}')" class="btn btn-primary btn-sm" type="submit">Submit</button>        
+                `;
+                });
+        })
+
+        function updateZooDetails(id) {
+            const updatedZooName = document.getElementById('updatedZooName').value;
+            const updatedZooStatus = document.getElementById('updatedZooStatus').value;
+            const data = { updatedZooName, updatedZooStatus };
+
+            fetch(`/updateZoo/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result) {                        
+                        document.getElementById('updatingIdZoo').innerHTML = '';
+                    }
+                })
+        }
+    </script>
+
+
+</body>
+
+</html>
